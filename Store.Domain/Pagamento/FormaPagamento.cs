@@ -31,5 +31,12 @@ namespace Store.Domain.Pagamento
         {
             get { return Id == (int)TipoFormaPagamento.NaoDefinido; }
         }
+
+        public override void Validate()
+        {
+            LimparMensagensValidacao();
+            if (string.IsNullOrEmpty(Nome))
+                AddMessage("Informe uma forma de pagamento!");
+        }
     }
 }

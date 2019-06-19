@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Store.Domain.Entidades
@@ -25,5 +26,15 @@ namespace Store.Domain.Entidades
         public int FormaPagamentoId { get; set; }
 
         public ICollection<ItemPedido> ItemPedidos { get; set; }
+
+        public override void Validate()
+        {
+            LimparMensagensValidacao();
+            if (!ItemPedidos.Any())
+                AddMessage("Informe um item do pedido!");
+
+            if (string.IsNullOrEmpty(Cep))
+                AddMessage("Informe o CEP!");
+        }
     }
 }

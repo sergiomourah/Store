@@ -10,5 +10,14 @@ namespace Store.Domain.Entidades
 
         public int Quantidade { get; set; }
 
+        public override void Validate()
+        {
+            LimparMensagensValidacao();
+            if (ProdutoId == 0)
+                AddMessage("Informe um produto!");
+
+            if (ProdutoId == 0)
+                AddMessage("Informe a quantidade do produto!");
+        }
     }
 }

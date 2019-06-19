@@ -16,5 +16,15 @@ namespace Store.Domain.Entidades
         /// 
         /// </summary>
         public ICollection<Pedido> Pedidos { get; set; }
+
+        public override void Validate()
+        {
+            LimparMensagensValidacao();
+            if (string.IsNullOrEmpty(Email))
+                AddMessage("Informe o Email!");
+
+            if (string.IsNullOrEmpty(Senha))
+                AddMessage("Informe a senha!");
+        }
     }
 }

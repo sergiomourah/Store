@@ -12,5 +12,14 @@ namespace Store.Domain.Entidades
 
         public decimal Preco { get; set; }
 
+        public override void Validate()
+        {
+            LimparMensagensValidacao();
+            if (string.IsNullOrEmpty(Nome))
+                AddMessage("Informe o nome para o Produto!");
+
+            if (Preco > decimal.Zero)
+                AddMessage("Informe o preço para o Produto!");
+        }
     }
 }
