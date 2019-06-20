@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Store.Domain.Enumerados
 {
-    public enum TipoFormaPagamento
+    public enum TipoFormaPagamentoEnum
     {
         NaoDefinido = 0,
         Boleto = 1,
