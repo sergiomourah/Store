@@ -9,7 +9,7 @@ namespace Store.Domain.Entidades
     {
         public int Id { get; set; }
 
-        public List<string> _mensagensValidacao { get; set; }
+        private List<string> _mensagensValidacao { get; set; }
 
         private List<string> MensagemValidacao
         {

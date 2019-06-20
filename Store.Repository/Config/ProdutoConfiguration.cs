@@ -11,7 +11,21 @@ namespace Store.Repository.Config
     {
         public void Configure(EntityTypeBuilder<Produto> builder)
         {
-            throw new NotImplementedException();
+            builder.HasKey(u => u.Id);
+            //Builder utiliza o padrão Fluent
+            builder
+                .Property(p => p.Nome)
+                .IsRequired()
+                .HasMaxLength(100);
+
+            builder
+               .Property(p => p.Descricao)
+               .IsRequired()
+               .HasMaxLength(255);
+
+            builder
+               .Property(p => p.Preco)
+               .IsRequired();
         }
     }
 }

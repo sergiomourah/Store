@@ -28,7 +28,8 @@ namespace Store.Web
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             var connnectionString = Configuration.GetConnectionString("MySqlConnection");
             services.AddDbContext<StoreContext>(option=> 
-                                                option.UseMySql(connnectionString, 
+                                                option.UseLazyLoadingProxies()
+                                               .UseMySql(connnectionString, 
                                                                 m=> m.MigrationsAssembly("Store.Repository")));
 
             // In production, the Angular files will be served from this directory

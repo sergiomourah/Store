@@ -11,7 +11,17 @@ namespace Store.Repository.Config
     {
         public void Configure(EntityTypeBuilder<FormaPagamento> builder)
         {
-            throw new NotImplementedException();
+            builder.HasKey(f => f.Id);
+            //Builder utiliza o padrão Fluent
+            builder
+                .Property(f => f.Nome)
+                .IsRequired()
+                .HasMaxLength(50);
+
+            builder
+                .Property(f => f.Descricao)
+                .IsRequired()
+                .HasMaxLength(100);
         }
     }
 }
