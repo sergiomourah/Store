@@ -45,6 +45,8 @@ namespace Store.Repository.Config
                .Property(p => p.NumeroEndereco)
                .IsRequired()
                .HasMaxLength(50);
+
+            builder.HasOne(p => p.FormaPagamento);
         }
     }
 }

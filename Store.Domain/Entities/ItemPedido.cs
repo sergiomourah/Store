@@ -8,6 +8,8 @@ namespace Store.Domain.Entidades
     {
         public int ProdutoId { get; set; }
 
+        public virtual Produto Produto { get; set; }
+
         public int Quantidade { get; set; }
 
         public override void Validate()
@@ -16,7 +18,7 @@ namespace Store.Domain.Entidades
             if (ProdutoId == 0)
                 AddMessage("Informe um produto!");
 
-            if (ProdutoId == 0)
+            if (Quantidade == 0)
                 AddMessage("Informe a quantidade do produto!");
         }
     }

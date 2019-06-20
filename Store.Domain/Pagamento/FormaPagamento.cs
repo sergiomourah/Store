@@ -14,22 +14,22 @@ namespace Store.Domain.Pagamento
 
         public bool IsBoleto
         {
-            get { return Id == (int)TipoFormaPagamento.Boleto; }
+            get { return Id == (int)TipoFormaPagamentoEnum.Boleto; }
         }
 
         public bool IsCartaoCredito
         {
-            get { return Id == (int)TipoFormaPagamento.CartaoCredito; }
+            get { return Id == (int)TipoFormaPagamentoEnum.CartaoCredito; }
         }
 
         public bool IsDeposito
         {
-            get { return Id == (int)TipoFormaPagamento.Deposito; }
+            get { return Id == (int)TipoFormaPagamentoEnum.Deposito; }
         }
 
         public bool IsNotDefinido
         {
-            get { return Id == (int)TipoFormaPagamento.NaoDefinido; }
+            get { return Id == (int)TipoFormaPagamentoEnum.NaoDefinido; }
         }
 
         public override void Validate()
