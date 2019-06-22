@@ -1,46 +1,53 @@
 ﻿using Store.Domain.Interfaces;
+using Store.Repository.Context;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Store.Repository.Repository
 {
     public class BaseRespository<TEntity> : IBaseRepository<TEntity> where TEntity : class
     {
+        protected readonly StoreContext StoreContext;
 
-        public BaseRespository()
+
+        public BaseRespository(StoreContext storeContext)
         {
-
+            StoreContext = storeContext;
         }
 
         public void Insert(TEntity entity)
         {
-            throw new NotImplementedException();
+            StoreContext.Set<TEntity>().Add(entity);
+            StoreContext.SaveChanges();
         }
 
         public void Update(TEntity entity)
         {
-            throw new NotImplementedException();
+            StoreContext.Set<TEntity>().Update(entity);
+            StoreContext.SaveChanges();
         }
 
         public void Delete(TEntity entity)
         {
-            throw new NotImplementedException();
+            StoreContext.Set<TEntity>().Remove(entity);
+            StoreContext.SaveChanges();
         }
 
         public IEnumerable<TEntity> FindAll()
         {
-            throw new NotImplementedException();
+            return StoreContext.Set<TEntity>().ToList();
         }
 
         public TEntity FindById(int id)
         {
-            throw new NotImplementedException();
+            return StoreContext.Set<TEntity>().Find(id);
         }
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            StoreContext.Dispose();
         }
     }
 }

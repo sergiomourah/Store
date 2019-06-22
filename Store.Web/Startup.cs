@@ -6,7 +6,9 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Store.Domain.Interfaces;
 using Store.Repository.Context;
+using Store.Repository.Repository;
 
 namespace Store.Web
 {
@@ -31,6 +33,8 @@ namespace Store.Web
                                                 option.UseLazyLoadingProxies()
                                                .UseMySql(connnectionString, 
                                                                 m=> m.MigrationsAssembly("Store.Repository")));
+
+            services.AddScoped<IProdutoRepository, ProdutoRepository>();
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
